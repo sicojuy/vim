@@ -5,7 +5,7 @@
 
 ## Quick Start
 
-1. install Vundle:
+1. Install Vundle:
 
    `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
@@ -17,7 +17,7 @@
 
    Launch `vim` and run `:PluginInstall`
    
-4. COnfigure YouCOmpleteMe
+4. Configure YouCOmpleteMe
 
    https://github.com/Valloric/YouCompleteMe
 
