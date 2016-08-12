@@ -16,8 +16,8 @@
 3. Install Plugins:
 
    Launch `vim` and run `:PluginInstall`
-   
-4. Configure YouCOmpleteMe
+
+4. Configure YouCompleteMe
 
    https://github.com/Valloric/YouCompleteMe
 
