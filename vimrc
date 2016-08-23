@@ -31,7 +31,7 @@ Plugin 'fatih/vim-go'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/nerdtree'
 Plugin 'junegunn/vim-easy-align'
-Plugin 'ShowTrailingWhitespace'
+Plugin 'vim-scripts/ShowTrailingWhitespace'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Valloric/YouCompleteMe'
 
