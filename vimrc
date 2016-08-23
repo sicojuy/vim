@@ -30,9 +30,13 @@ Plugin 'vim-scripts/txt.vim'
 Plugin 'fatih/vim-go'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/nerdtree'
-Plugin 'junegunn/vim-easy-align'
 Plugin 'vim-scripts/ShowTrailingWhitespace'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-misc'
+Plugin 'xolox/vim-session'
+Plugin 'godlygeek/tabular'
+Plugin 'vim-airline/vim-airline'
+Plugin 'jlanzarotta/bufexplorer'
 Plugin 'Valloric/YouCompleteMe'
 
 
@@ -53,9 +57,6 @@ filetype plugin indent on    " required
 
 " enable 256 color
 set t_Co=256
-
-" 状态行显示的内容
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
 
 " 总是显示状态行
 set laststatus=2
@@ -159,10 +160,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 " 打开目录树
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" Easy Align
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
 
 " golang-vim 不要自动格式化
 let g:go_fmt_autosave = 0
