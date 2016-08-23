@@ -1,7 +1,8 @@
-## Requirement
+## Prepare
 
 * Vim 7.3.598 with python2 or python3 support
 * 256 colors terminal, [tutorial](http://www.robmeerman.co.uk/unix/256colours)
+* Dir colors, [tutorial](https://github.com/seebi/dircolors-solarized)
 
 ## Install
 
