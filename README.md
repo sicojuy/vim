@@ -1,23 +1,48 @@
-## Vim
+## Requirement
 
-* Plugins managed by [Vundle](https://github.com/VundleVim/Vundle.vim)
-* Include some useful plugins, like: YouCompleteMe, NERDTree etc
+* Vim 7.3.598 with python2 or python3 support
+* 256 colors terminal, [tutorial](http://www.robmeerman.co.uk/unix/256colours)
 
-## Quick Start
+## Install
 
 1. Install Vundle:
 
    `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+   
+2. Clone code
 
-2. Configure vimrc:
+   `git clone https://github.com/sicojuy/vim.vim`
 
-   `cp vimrc ~/.vimrc`
+3. Copy vimrc
 
-3. Install Plugins:
+   `cp vim/vimrc ~/.vimrc`
 
-   Launch `vim` and run `:PluginInstall`
+4. Install Plugins:
 
-4. Configure YouCompleteMe
+   `vim -c "PluginInstall"`
+   
+## Plugins
 
-   https://github.com/Valloric/YouCompleteMe
+* [VundleVim/Vundle](https://github.com/VundleVim/Vundle.vim)
+* [vim-scripts/txt.vim](https://github.com/vim-scripts/txt.vim)
+* [fatih/vim-go](https://github.com/fatih/vim-go)
+* [kchmck/vim-coffee-script](https://github.com/kchmck/vim-coffee-script)
+* [scrooloose/nerdtree](https://github.com/scrooloose/nerdtree)
+* [junegunn/vim-easy-align](https://github.com/junegunn/vim-easy-align)
+* [vim-scripts/ShowTrailingWhitespace](https://github.com/vim-scripts/ShowTrailingWhitespace)
+* [altercation/vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
+* [Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 
+## Key Mappings
+
+### vim
+
+* `<F9>` show/hide line number
+* `<F10>` set paste or not
+
+### NERDTree
+
+* `<Ctrl> + N` open/close NERDTree
+* `<Ctrl> + H` switch to left tab
+* `<Ctrl> + L` switch to right tab
+* `m` show menu
