@@ -18,7 +18,7 @@
 
    `cp vim/vimrc ~/.vimrc`
 
-4. Install Plugins:
+4. Install Plugins, this will take some times
 
    `vim -c "PluginInstall"`
    
