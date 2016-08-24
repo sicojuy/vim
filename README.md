@@ -9,7 +9,7 @@
 1. Install Vundle:
 
    `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
-   
+
 2. Clone code
 
    `git clone https://github.com/sicojuy/vim.vim`
@@ -21,7 +21,7 @@
 4. Install Plugins, this will take some times
 
    `vim -c "PluginInstall"`
-   
+
 ## Plugins
 
 * [VundleVim/Vundle](https://github.com/VundleVim/Vundle.vim)
@@ -38,12 +38,12 @@
 
 ### vim
 
-* `<F9>` show/hide line number
-* `<F10>` set paste or not
+* `<Ctrl> + N` show/hide line number
+* `<Ctrl> + P` set paste or not
 
 ### NERDTree
 
 * `<Ctrl> + N` open/close NERDTree
 * `<Ctrl> + H` switch to left tab
 * `<Ctrl> + L` switch to right tab
-* `m` show menu
+* `<Ctrl> + M` show menu

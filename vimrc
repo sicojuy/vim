@@ -26,17 +26,15 @@ Plugin 'VundleVim/Vundle.vim'
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
 
-Plugin 'vim-scripts/txt.vim'
-Plugin 'fatih/vim-go'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/ShowTrailingWhitespace'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'vim-airline/vim-airline'
 Plugin 'vim-misc'
 Plugin 'xolox/vim-session'
 Plugin 'godlygeek/tabular'
-Plugin 'vim-airline/vim-airline'
-Plugin 'jlanzarotta/bufexplorer'
+Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
 
 
@@ -71,10 +69,10 @@ set termencoding=utf-8
 set encoding=utf-8
 
 " F9 switch line number
-nnoremap <F9> :set nu!<CR>
+map <c-n> :set nu!<CR>
 
 " F10 switch paste
-nnoremap <F10> :set paste!<CR>
+map <c-p> :set paste!<CR>
 
 " 代码补全
 set completeopt=preview,menu
@@ -122,8 +120,8 @@ set hlsearch
 set langmenu=zh_CN.UTF-8
 set helplang=cn
 
-" 命令行（在状态行下）的高度，默认为1，这里是2
-set cmdheight=2
+" 命令行（在状态行下）的高度
+set cmdheight=1
 
 " 保存全局变量
 set viminfo+=!
@@ -148,9 +146,6 @@ set showmatch
 " 匹配括号高亮的时间（单位是十分之一秒）
 set matchtime=1
 
-" 高亮显示普通txt文件（需要txt.vim脚本）
-au BufRead,BufNewFile *  setfiletype txt
-
 " 打开文件类型检测, 加了这句才可以用智能补全
 set completeopt=longest,menu
 
@@ -170,7 +165,10 @@ au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|
 " nerdtree tab shortkey
 map <c-l> <c-w>l
 map <c-h> <c-w>h
-map <C-n> :NERDTreeToggle<CR>
+map <c-m> :NERDTreeToggle<CR>
 
 " 修复delete失效
 set backspace=indent,eol,start
+
+" session auto save
+let g:session_autosave = 'yes'
