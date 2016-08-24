@@ -25,13 +25,15 @@
 ## Plugins
 
 * [VundleVim/Vundle](https://github.com/VundleVim/Vundle.vim)
-* [vim-scripts/txt.vim](https://github.com/vim-scripts/txt.vim)
-* [fatih/vim-go](https://github.com/fatih/vim-go)
-* [kchmck/vim-coffee-script](https://github.com/kchmck/vim-coffee-script)
 * [scrooloose/nerdtree](https://github.com/scrooloose/nerdtree)
-* [junegunn/vim-easy-align](https://github.com/junegunn/vim-easy-align)
 * [vim-scripts/ShowTrailingWhitespace](https://github.com/vim-scripts/ShowTrailingWhitespace)
 * [altercation/vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
+* [jlanzarotta/bufexplorer](https://github.com/jlanzarotta/bufexplorer)
+* [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
+* [xolox/vim-misc](https://github.com/xolox/vim-misc)
+* [xolox/vim-session](https://github.com/xolox/vim-session)
+* [godlygeek/tabular](https://github.com/godlygeek/tabular)
+* [fatih/vim-go](https://github.com/fatih/vim-go)
 * [Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
 
 ## Key Mappings
