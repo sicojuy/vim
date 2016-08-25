@@ -28,7 +28,6 @@
 * [scrooloose/nerdtree](https://github.com/scrooloose/nerdtree)
 * [vim-scripts/ShowTrailingWhitespace](https://github.com/vim-scripts/ShowTrailingWhitespace)
 * [altercation/vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
-* [jlanzarotta/bufexplorer](https://github.com/jlanzarotta/bufexplorer)
 * [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
 * [xolox/vim-misc](https://github.com/xolox/vim-misc)
 * [xolox/vim-session](https://github.com/xolox/vim-session)
