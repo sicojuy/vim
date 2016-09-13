@@ -30,8 +30,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/ShowTrailingWhitespace'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-misc'
-Plugin 'xolox/vim-session'
 Plugin 'godlygeek/tabular'
 Plugin 'fatih/vim-go'
 Plugin 'Valloric/YouCompleteMe'
@@ -168,6 +166,3 @@ map <c-m> :NERDTreeToggle<CR>
 
 " 修复delete失效
 set backspace=indent,eol,start
-
-" session auto save
-let g:session_autosave = 'yes'

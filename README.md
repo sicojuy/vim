@@ -29,8 +29,6 @@
 * [vim-scripts/ShowTrailingWhitespace](https://github.com/vim-scripts/ShowTrailingWhitespace)
 * [altercation/vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
 * [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
-* [xolox/vim-misc](https://github.com/xolox/vim-misc)
-* [xolox/vim-session](https://github.com/xolox/vim-session)
 * [godlygeek/tabular](https://github.com/godlygeek/tabular)
 * [fatih/vim-go](https://github.com/fatih/vim-go)
 * [Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
@@ -44,7 +42,6 @@
 
 ### NERDTree
 
-* `<Ctrl> + N` open/close NERDTree
 * `<Ctrl> + H` switch to left tab
 * `<Ctrl> + L` switch to right tab
 * `<Ctrl> + M` show menu
