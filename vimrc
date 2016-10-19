@@ -65,10 +65,10 @@ set fileencoding=utf-8
 set termencoding=utf-8
 set encoding=utf-8
 
-" F9 switch line number
+" set line number
 map <c-n> :set nu!<CR>
 
-" F10 switch paste
+" set paste
 map <c-p> :set paste!<CR>
 
 " 代码补全
