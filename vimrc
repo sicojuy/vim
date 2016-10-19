@@ -87,8 +87,8 @@ set confirm
 
 " 自动缩进
 set autoindent
-set cindent
-set smartindent
+" set cindent
+" set smartindent
 
 " 空格代替TAB
 set expandtab
