@@ -32,6 +32,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'godlygeek/tabular'
 Plugin 'fatih/vim-go'
+Plugin 'luochen1990/rainbow'
 Plugin 'Valloric/YouCompleteMe'
 
 
@@ -166,3 +167,6 @@ map <c-m> :NERDTreeToggle<CR>
 
 " 修复delete失效
 set backspace=indent,eol,start
+
+" 括号高亮
+let g:rainbow_active = 1
