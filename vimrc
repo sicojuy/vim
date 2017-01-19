@@ -34,6 +34,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'fatih/vim-go'
 Plugin 'luochen1990/rainbow'
 Plugin 'Valloric/YouCompleteMe'
+"Plugin 'ervandew/supertab'
 
 
 " All of your Plugins must be added before the following line
