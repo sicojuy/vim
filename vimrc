@@ -110,7 +110,7 @@ set nobackup
 set noswapfile
 
 " 搜索忽略大小写
-set ignorecase
+" set ignorecase
 
 " 搜索字符高亮
 set hlsearch
