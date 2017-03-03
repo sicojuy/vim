@@ -1,9 +1,3 @@
-## Prepare
-
-* Vim 7.3.598 with python2 or python3 support
-* 256 colors terminal, [tutorial](http://www.robmeerman.co.uk/unix/256colours)
-* Dir colors, [tutorial](https://github.com/seebi/dircolors-solarized)
-
 ## Install
 
 1. Install Vundle:
@@ -31,7 +25,7 @@
 * [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
 * [godlygeek/tabular](https://github.com/godlygeek/tabular)
 * [fatih/vim-go](https://github.com/fatih/vim-go)
-* [Valloric/YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
+* [ervandew/supertab](https://github.com/ervandew/supertab)
 
 ## Key Mappings
 

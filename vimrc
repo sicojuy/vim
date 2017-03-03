@@ -33,9 +33,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'godlygeek/tabular'
 Plugin 'fatih/vim-go'
 Plugin 'luochen1990/rainbow'
-Plugin 'Valloric/YouCompleteMe'
-"Plugin 'ervandew/supertab'
-
+Plugin 'ervandew/supertab'
+"Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -58,6 +57,9 @@ set t_Co=256
 " 总是显示状态行
 set laststatus=2
 
+" 命令行（在状态行下）的高度
+set cmdheight=1
+
 " 去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限
 set nocompatible
 
@@ -67,14 +69,17 @@ set fileencoding=utf-8
 set termencoding=utf-8
 set encoding=utf-8
 
-" set line number
-map <c-n> :set nu!<CR>
-
 " set paste
 map <c-p> :set paste!<CR>
 
+" set line number
+map <c-n> :set nu!<CR>
+
 " 代码补全
 set completeopt=preview,menu
+
+" 打开文件类型检测, 加了这句才可以用智能补全
+set completeopt=longest,menu
 
 " 语法高亮
 syntax enable
@@ -89,8 +94,6 @@ set confirm
 
 " 自动缩进
 set autoindent
-" set cindent
-" set smartindent
 
 " 空格代替TAB
 set expandtab
@@ -98,6 +101,9 @@ set expandtab
 " Tab键的宽度
 set softtabstop=4
 set shiftwidth=4
+
+" Go tab显示宽度
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
 " 显示行号
 set number
@@ -109,18 +115,12 @@ set history=1000
 set nobackup
 set noswapfile
 
-" 搜索忽略大小写
-" set ignorecase
-
 " 搜索字符高亮
 set hlsearch
 
 " 语言设置
 set langmenu=zh_CN.UTF-8
 set helplang=cn
-
-" 命令行（在状态行下）的高度
-set cmdheight=1
 
 " 保存全局变量
 set viminfo+=!
@@ -145,8 +145,8 @@ set showmatch
 " 匹配括号高亮的时间（单位是十分之一秒）
 set matchtime=1
 
-" 打开文件类型检测, 加了这句才可以用智能补全
-set completeopt=longest,menu
+" 括号高亮
+let g:rainbow_active = 1
 
 " 去掉行尾空白符
 autocmd BufWritePre * :%s/\s\+$//e
@@ -154,9 +154,6 @@ autocmd BufWritePre * :%s/\s\+$//e
 " 打开目录树
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-" golang-vim 不要自动格式化
-let g:go_fmt_autosave = 0
 
 " 记录上一次退出时的位置
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
@@ -169,5 +166,5 @@ map <c-m> :NERDTreeToggle<CR>
 " 修复delete失效
 set backspace=indent,eol,start
 
-" 括号高亮
-let g:rainbow_active = 1
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
