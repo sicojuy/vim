@@ -30,8 +30,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/ShowTrailingWhitespace'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
-Plugin 'fatih/vim-go'
 Plugin 'luochen1990/rainbow'
+Plugin 'fatih/vim-go'
 Plugin 'klen/python-mode'
 
 " All of your Plugins must be added before the following line
