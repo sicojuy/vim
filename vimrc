@@ -31,6 +31,7 @@ Plugin 'vim-scripts/ShowTrailingWhitespace'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'luochen1990/rainbow'
+Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'klen/python-mode'
 
@@ -113,10 +114,12 @@ nmap <C-p> :set paste!<CR>
 
 " Completion
 set completeopt=preview,longest,menu
-inoremap <Tab> <C-x><C-o>
 
 " Rainbow
 let g:rainbow_active = 1
+
+" SuperTab
+let g:SuperTabDefaultCompletionType = "context"
 
 " NERDTree
 autocmd StdinReadPre * let s:std_in=1

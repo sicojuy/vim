@@ -22,6 +22,7 @@
 * [altercation/vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
 * [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
 * [luochen1990/rainbow](https://github.com/luochen1990/rainbow)
+* [ervandew/supertab](https://github.com/ervandew/supertab)
 * [fatih/vim-go](https://github.com/fatih/vim-go)
 * [klen/python-mode](https://github.com/python-mode/python-mode)
 
