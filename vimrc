@@ -118,7 +118,7 @@ inoremap <Tab> <C-x><C-o>
 " Rainbow
 let g:rainbow_active = 1
 
-" NERdTree
+" NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 map <C-h> <C-w>h
