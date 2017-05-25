@@ -4,17 +4,15 @@
 
    `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
-2. Clone code
+2. Copy `vimrc` to ~/.vimrc
 
-   `git clone https://github.com/sicojuy/vim.vim`
-
-3. Copy vimrc
-
-   `cp vim/vimrc ~/.vimrc`
-
-4. Install Plugins, this will take some times
+3. Install Plugins, this will take some times
 
    `vim -c "PluginInstall"`
+
+4. Install Go binaries
+
+   `vim -c "GoInstallBinaries"`
 
 ## Plugins
 
@@ -23,19 +21,19 @@
 * [vim-scripts/ShowTrailingWhitespace](https://github.com/vim-scripts/ShowTrailingWhitespace)
 * [altercation/vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
 * [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
-* [godlygeek/tabular](https://github.com/godlygeek/tabular)
+* [luochen1990/rainbow](https://github.com/luochen1990/rainbow)
 * [fatih/vim-go](https://github.com/fatih/vim-go)
-* [ervandew/supertab](https://github.com/ervandew/supertab)
+* [klen/python-mode](https://github.com/python-mode/python-mode)
 
-## Key Mappings
+## Shortcut key
 
-### vim
-
-* `<Ctrl> + N` show/hide line number
-* `<Ctrl> + P` set paste or not
-
-### NERDTree
-
-* `<Ctrl> + H` switch to left tab
-* `<Ctrl> + L` switch to right tab
-* `<Ctrl> + M` show menu
+* `<Tab>` auto completion
+* `<Ctrl> + p` switch paste mode
+* `<Ctrl> + m` open NERDTree
+* `<Ctrl> + h` move to left screen
+* `<Ctrl> + j` move to bottom screen
+* `<Ctrl> + k` move to top screen
+* `<Ctrl> + l` move to right screen
+* `<Ctrl> + ]` goto definition
+* `<Ctrl> + <Shift> + r` Python run
+* `GoRun` Golang run
