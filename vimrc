@@ -138,3 +138,4 @@ let g:pymode_rope_goto_definition_bind = "<C-]>"
 let g:pymode_run_bind = "<C-S-r>"
 let g:pymode_folding = 0
 let g:pymode_rope_complete_on_dot = 0
+let g:pymode_options_max_line_length = 256
