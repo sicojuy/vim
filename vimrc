@@ -26,14 +26,10 @@ Plugin 'VundleVim/Vundle.vim'
 " Avoid a name conflict with L9
 " Plugin 'user/L9', {'name': 'newL9'}
 
-Plugin 'scrooloose/nerdtree'
 Plugin 'vim-scripts/ShowTrailingWhitespace'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
-Plugin 'luochen1990/rainbow'
 Plugin 'ervandew/supertab'
-Plugin 'fatih/vim-go'
-Plugin 'klen/python-mode'
+Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -50,92 +46,41 @@ filetype plugin indent on    " required
 
 " Put your non-Plugin stuff after this line
 
+" Base config
 set t_Co=256
-
 set laststatus=2
-
 set cmdheight=1
-
 set nocompatible
-
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set fileencoding=utf-8
 set termencoding=utf-8
 set encoding=utf-8
-
 syntax enable
-set background=dark
-colorscheme solarized
-
+colorscheme gruvbox
 set noeb
-
 set confirm
-
 set autoindent
-
 set expandtab
-
 set softtabstop=4
 set shiftwidth=4
-
 set number
-
 set history=1000
-
 set nobackup
 set noswapfile
-
 set hlsearch
-
 set langmenu=zh_CN.UTF-8
 set helplang=cn
-
 set viminfo+=!
-
 set wildmenu
-
 set iskeyword+=_,$,@,%,#,-
-
 set mouse=i
 set selection=exclusive
 set selectmode=mouse,key
-
 set fillchars=vert:\ ,stl:\ ,stlnc:\
-
 autocmd BufWritePre * :%s/\s\+$//e
-
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
-
-" fix delete
-set backspace=indent,eol,start
-
-" set paste
-nmap <C-p> :set paste!<CR>
-
-" Completion
 set completeopt=preview,longest,menu
 
-" Rainbow
-let g:rainbow_active = 1
-
-" SuperTab
+" SuperTab config
 let g:SuperTabDefaultCompletionType = "context"
 
-" NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-map <C-m> :NERDTreeToggle<CR>
-
-" Golang
-autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-
-" Python
-let g:pymode_rope_goto_definition_bind = "<C-]>"
-let g:pymode_run_bind = "<C-S-r>"
-let g:pymode_folding = 0
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_options_max_line_length = 256
