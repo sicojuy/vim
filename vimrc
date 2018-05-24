@@ -56,6 +56,7 @@ set fileencoding=utf-8
 set termencoding=utf-8
 set encoding=utf-8
 syntax enable
+set background=dark
 colorscheme gruvbox
 set noeb
 set confirm
@@ -77,7 +78,6 @@ set mouse=i
 set selection=exclusive
 set selectmode=mouse,key
 set fillchars=vert:\ ,stl:\ ,stlnc:\
-autocmd BufWritePre * :%s/\s\+$//e
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 set completeopt=preview,longest,menu
 
