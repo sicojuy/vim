@@ -1,20 +1,38 @@
-## Install
+# vim
 
-1. Install Vundle:
+配置Vim开发环境，主要开发语言:
 
-   `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+* Golang
+* C/C++
+* Python
 
-2. Copy `vimrc` to ~/.vimrc
+# 环境依赖
 
-3. Install Plugins, this will take some times
+* vim >= 8.0
+* python
+* build-essential
+* cmake
+* python-dev
+* ctags
 
-   `vim -c "PluginInstall"`
+## 开始
 
-## Plugins
+```bash
+git clone https://github.com/sicojuy/vim.git ~/.vim
+```
 
-* [VundleVim/Vundle](https://github.com/VundleVim/Vundle.vim)
-* [vim-scripts/ShowTrailingWhitespace](https://github.com/vim-scripts/ShowTrailingWhitespace)
-* [morhetz/gruvbox](https://github.com/morhetz/gruvbox)
-* [vim-airline/vim-airline](https://github.com/vim-airline/vim-airline)
-* [ervandew/supertab](https://github.com/ervandew/supertab)
+安装Vim插件
+```bash
+vim -c "PlugInstall"
+```
 
+安装Go插件
+```bash
+vim -c "GoInstallBinaries"
+```
+
+安装YouCompleteMe
+```bash
+cd ~/.vim/plugged/YouCompleteMe
+./install.py --clang-completer --go-completer --ts-completer
+```
