@@ -83,6 +83,11 @@ Plug 'scrooloose/nerdtree'
 " 可以在导航目录中看到 git 版本信息
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" 查看当前代码文件中的变量和函数列表的插件，
+" 可以切换和跳转到代码中对应的变量和函数的位置
+" 大纲式导航, Go 需要 https://github.com/jstemmer/gotags 支持
+Plug 'majutsushi/tagbar'
+
 " 自动补全括号的插件，包括小括号，中括号，以及花括号
 Plug 'jiangmiao/auto-pairs'
 
@@ -101,6 +106,9 @@ Plug 'vim-scripts/ShowTrailingWhitespace'
 " 下面两个插件要配合使用，可以自动生成代码块
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+
+" 可以在 vim 中使用 tab 补全
+"Plug 'ervandew/supertab'
 
 " 配色方案
 Plug 'morhetz/gruvbox'
@@ -209,6 +217,41 @@ let g:go_highlight_generate_tags = 1
 let g:godef_split=2
 
 "==============================================================================
+"  majutsushi/tagbar 插件
+"==============================================================================
+
+" tagbar打开关闭快捷键
+nmap <Leader>t :TagbarToggle<CR>
+
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+
+"==============================================================================
 "  Valloric/YouCompleteMe 插件
 "==============================================================================
 
@@ -257,10 +300,6 @@ let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 "==============================================================================
 
 let g:javascript_plugin_jsdoc = 1
-augroup javascript_folding
-    au!
-    au FileType javascript setlocal foldmethod=syntax
-augroup END
 
 "==============================================================================
 "  其他插件配置
