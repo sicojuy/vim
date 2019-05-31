@@ -46,6 +46,14 @@ set encoding=utf-8
 " 定义快捷键的前缀，即<Leader>
 let mapleader=";"
 
+" ==== 系统剪切板复制粘贴 ====
+" v 模式下复制内容到系统剪切板
+vmap <Leader>c "+y
+" n 模式下复制一行到系统剪切板
+nmap <Leader>c "+yy
+" n 模式下粘贴系统剪切板的内容
+nmap <Leader>v "+p
+
 " vim系统菜单及语言设置
 set langmenu=zh_CN.UTF-8
 set helplang=cn
