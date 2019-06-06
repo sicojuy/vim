@@ -22,8 +22,10 @@ set noswapfile " 不要swap文件
 set confirm " 退出确认
 set wildmenu " 命令行补全提示
 
+" 共享系统粘贴板
+set clipboard=unnamed
+
 " 指定tag文件路径
-" set tags+=tags
 set tags=./.tags;,.tags
 
 " 命令历史数
@@ -33,7 +35,8 @@ set history=1000
 set completeopt=preview,longest,menu
 
 " tab 缩进
-set tabstop=4 " 设置Tab长度为4空格
+set softtabstop=4 " 设置Tab长度为4空格
+set expandtab
 set shiftwidth=4 " 设置自动缩进长度为4空格
 set autoindent " 继承前一行的缩进方式，适用于多行注释
 
