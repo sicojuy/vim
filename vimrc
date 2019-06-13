@@ -35,8 +35,8 @@ set history=1000
 set completeopt=preview,longest,menu
 
 " tab 缩进
-set softtabstop=4 " 设置Tab长度为4空格
-set expandtab
+set tabstop=4 " 设置Tab长度为4空格
+" set expandtab
 set shiftwidth=4 " 设置自动缩进长度为4空格
 set autoindent " 继承前一行的缩进方式，适用于多行注释
 
@@ -223,16 +223,16 @@ let g:godef_split=2
 "  Valloric/YouCompleteMe 插件
 "==============================================================================
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<space>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:ycm_global_ycm_extra_conf = "~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
+
+" make YCM compatible with UltiSnips
+let g:ycm_key_list_select_completion = ['<C-n>']
+let g:ycm_key_list_previous_completion = ['<C-p>']
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-let g:ycm_global_ycm_extra_conf = "~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
 
 "==============================================================================
 "  markdown 插件
