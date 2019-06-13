@@ -9,10 +9,10 @@
 # 环境依赖
 
 * vim >= 8.0
-* python
+* python3
 * build-essential
 * cmake
-* python-dev
+* python3-dev
 * ctags
 
 ## 开始
