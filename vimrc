@@ -34,7 +34,7 @@ set completeopt=preview,longest,menu
 " tab 缩进
 set tabstop=4 " 设置Tab长度为4空格
 "set expandtab
-"set shiftwidth=4 " 设置自动缩进长度为4空格
+set shiftwidth=4 " 设置自动缩进长度为4空格
 set autoindent " 继承前一行的缩进方式，适用于多行注释
 
 " 设置编码
