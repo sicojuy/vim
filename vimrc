@@ -15,7 +15,7 @@ set cursorline " 突出显示当前行
 set showmatch " 显示括号匹配
 set noeb " 不要提示音
 set incsearch " 实时搜索
-set ignorecase "搜索忽略大小写
+"set ignorecase "搜索忽略大小写
 set hlsearch " 高亮搜索关键词
 set nobackup " 不要备份文件
 set noswapfile " 不要swap文件
