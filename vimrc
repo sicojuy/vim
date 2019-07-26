@@ -18,9 +18,6 @@ set wildmenu " 命令行补全提示
 " 保持在光标上下的最少行数
 set scrolloff=10
 
-" 指定tag文件路径
-set tags=./.tags;,.tags
-
 " 命令历史数
 set history=1000
 
@@ -101,7 +98,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'Valloric/YouCompleteMe'
 
 " go 主要插件
-Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'fatih/vim-go'
 
 " go 中的代码追踪，输入 gd 就可以自动跳转
 Plug 'dgryski/vim-godef'
@@ -109,9 +106,6 @@ Plug 'dgryski/vim-godef'
 " markdown 插件
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
-
-" 自动生成tags
-Plug 'ludovicchabant/vim-gutentags'
 
 " 插件结束的位置，插件全部放在此行上面
 call plug#end()
@@ -184,7 +178,7 @@ nmap ga <Plug>(EasyAlign)
 "==============================================================================
 "  Valloric/YouCompleteMe 插件
 "==============================================================================
-let g:ycm_global_ycm_extra_conf = "~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
+let g:ycm_global_ycm_extra_conf = "~/.vim/ycm_extra_conf.py"
 
 "==============================================================================
 " vim-go 插件
@@ -207,26 +201,4 @@ let g:godef_split=2
 "  markdown 插件
 "==============================================================================
 map <silent> <Leader>m <Plug>MarkdownPreview
-
-"==============================================================================
-"  vim-gutentags 插件
-"==============================================================================
-" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
-
-" 所生成的数据文件的名称 "
-let g:gutentags_ctags_tagfile = '.tags'
-
-" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
-let s:vim_tags = expand('~/.cache/tags')
-let g:gutentags_cache_dir = s:vim_tags
-" 检测 ~/.cache/tags 不存在就新建 "
-if !isdirectory(s:vim_tags)
-   silent! call mkdir(s:vim_tags, 'p')
-endif
-
-" 配置 ctags 的参数 "
-let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
-let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
-let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 

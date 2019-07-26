@@ -13,7 +13,6 @@
 * build-essential
 * cmake
 * python3-dev
-* ctags
 
 ## 开始
 
@@ -34,5 +33,5 @@ vim -c "GoInstallBinaries"
 安装YouCompleteMe
 ```bash
 cd ~/.vim/plugged/YouCompleteMe
-./install.py --clang-completer --go-completer --ts-completer
+./install.py --clang-completer --clangd-completer --go-completer --ts-completer
 ```
