@@ -15,6 +15,9 @@ set noswapfile " 不要swap文件
 set confirm " 退出确认
 set wildmenu " 命令行补全提示
 
+" 保持在光标上下的最少行数
+set scrolloff=10
+
 " 指定tag文件路径
 set tags=./.tags;,.tags
 
@@ -40,11 +43,11 @@ set encoding=utf-8
 let mapleader=";"
 
 " v 模式下复制内容到系统剪切板
-vmap <Leader>c "+y
+vmap <Leader>y "+y
 " n 模式下复制一行到系统剪切板
-nmap <Leader>c "+yy
+nmap <Leader>y "+yy
 " n 模式下粘贴系统剪切板的内容
-nmap <Leader>v "+p
+nmap <Leader>p "+p
 
 " vim系统菜单及语言设置
 set langmenu=zh_CN.UTF-8
