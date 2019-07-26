@@ -1,13 +1,7 @@
 "==============================================================================
 " vim 内置配置
 "==============================================================================
-" 设置 vimrc 修改保存后立刻生效，不用在重新打开
-" 建议配置完成后将这个关闭，否则配置多了之后会很卡
-" autocmd BufWritePost $MYVIMRC source $MYVIMRC
-
-" 关闭兼容模式
-set nocompatible
-
+set nocompatible " 关闭兼容模式
 set nu " 设置行号
 set cursorline " 突出显示当前行
 "set cursorcolumn " 突出显示当前列
@@ -45,7 +39,6 @@ set encoding=utf-8
 " 定义快捷键的前缀，即<Leader>
 let mapleader=";"
 
-" ==== 系统剪切板复制粘贴 ====
 " v 模式下复制内容到系统剪切板
 vmap <Leader>c "+y
 " n 模式下复制一行到系统剪切板
@@ -64,15 +57,15 @@ set iskeyword+=_,$,@,%,#,-
 " 打开上次编辑的位置
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-syntax enable
-syntax on                    " 开启文件类型侦测
-filetype plugin indent on    " 启用自动补全
-
 " 保存时自动清除尾部空白符
 autocmd BufWritePre * :%s/\s\+$//e
 
 " 退出插入模式指定类型的文件自动保存
 " au InsertLeave *.go,*.sh,*.py,*.c,*.cpp write
+
+syntax enable
+syntax on                    " 开启文件类型侦测
+filetype plugin indent on    " 启用自动补全
 
 "==============================================================================
 " 插件配置
@@ -130,15 +123,6 @@ colorscheme gruvbox " 主题
 set background=dark " 主题背景 dark or light
 
 "==============================================================================
-" vim-easy-align 插件
-"==============================================================================
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-"==============================================================================
 " NERDTree 插件
 "==============================================================================
 " 打开和关闭NERDTree快捷键
@@ -186,6 +170,20 @@ let g:NERDTreeIndicatorMapCustom = {
 let g:NERDTreeShowIgnoredStatus = 1
 
 "==============================================================================
+" vim-easy-align 插件
+"==============================================================================
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+"==============================================================================
+"  Valloric/YouCompleteMe 插件
+"==============================================================================
+let g:ycm_global_ycm_extra_conf = "~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
+
+"==============================================================================
 " vim-go 插件
 "==============================================================================
 let g:go_fmt_command = "goimports"
@@ -201,11 +199,6 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_generate_tags = 1
 let g:godef_split=2
-
-"==============================================================================
-"  Valloric/YouCompleteMe 插件
-"==============================================================================
-let g:ycm_global_ycm_extra_conf = "~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py"
 
 "==============================================================================
 "  markdown 插件
