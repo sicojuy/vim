@@ -30,6 +30,9 @@ set tabstop=4 " 设置Tab长度为4空格
 set shiftwidth=4 " 设置自动缩进长度为4空格
 set autoindent " 继承前一行的缩进方式，适用于多行注释
 
+" 修复插入模式无法delete问题
+set backspace=indent,eol,start
+
 " 设置编码
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set fileencoding=utf-8
