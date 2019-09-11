@@ -25,10 +25,16 @@ set history=1000
 set completeopt=preview,longest,menu
 
 " tab 缩进
+set expandtab " tab替换成空格
 set tabstop=4 " 设置Tab长度为4空格
-"set expandtab " tab替换成空格
 set shiftwidth=4 " 设置自动缩进长度为4空格
 set autoindent " 继承前一行的缩进方式，适用于多行注释
+
+autocmd FileType go setlocal noexpandtab
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2
+autocmd FileType html setlocal tabstop=2 shiftwidth=2
+autocmd FileType vue setlocal tabstop=2 shiftwidth=2
+autocmd FileType json setlocal tabstop=2 shiftwidth=2
 
 " 修复插入模式无法delete问题
 set backspace=indent,eol,start
@@ -109,6 +115,12 @@ Plug 'dgryski/vim-godef'
 " markdown 插件
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
+
+" vue 插件
+Plug 'posva/vim-vue'
+
+" js 插件
+Plug 'pangloss/vim-javascript'
 
 " 插件结束的位置，插件全部放在此行上面
 call plug#end()
