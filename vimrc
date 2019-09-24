@@ -119,9 +119,6 @@ Plug 'iamcco/markdown-preview.vim'
 " vue 插件
 Plug 'posva/vim-vue'
 
-" js 插件
-Plug 'pangloss/vim-javascript'
-
 " 插件结束的位置，插件全部放在此行上面
 call plug#end()
 
