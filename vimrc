@@ -8,7 +8,8 @@ set cursorline " 突出显示当前行
 set showmatch " 显示括号匹配
 set noeb " 不要提示音
 set incsearch " 实时搜索
-"set ignorecase "搜索忽略大小写
+set ignorecase " 搜索忽略大小写
+set smartcase " 如果有一个大写字母，则大小写敏感查找
 set hlsearch " 高亮搜索关键词
 set nobackup " 不要备份文件
 set noswapfile " 不要swap文件
@@ -22,7 +23,7 @@ set scrolloff=10
 set history=1000
 
 " 补全配置
-set completeopt=preview,longest,menu
+set completeopt=popup,longest,menu
 
 " tab 缩进
 set expandtab " tab替换成空格
@@ -100,27 +101,21 @@ Plug 'vim-airline/vim-airline'
 " 可以快速对齐的插件
 Plug 'junegunn/vim-easy-align'
 
-" 自动补全括号的插件，包括小括号，中括号，以及花括号
-"Plug 'jiangmiao/auto-pairs'
-
 " 代码自动完成，安装完插件还需要额外配置才可以使用
 Plug 'Valloric/YouCompleteMe'
 
 " go 主要插件
-Plug 'fatih/vim-go'
-
-" go 中的代码追踪，输入 gd 就可以自动跳转
-Plug 'dgryski/vim-godef'
+Plug 'fatih/vim-go', {'for': 'go'}
 
 " markdown 插件
-Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.vim'
+Plug 'iamcco/mathjax-support-for-mkdp', {'for': 'md'}
+Plug 'iamcco/markdown-preview.vim', {'for': 'md'}
 
 " vue 插件
-Plug 'posva/vim-vue'
+Plug 'posva/vim-vue', {'for': ['js', 'ts', 'vue']}
 
 " js 插件
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', {'for': ['js', 'ts']}
 
 " 插件结束的位置，插件全部放在此行上面
 call plug#end()
@@ -199,18 +194,6 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/ycm_extra_conf.py"
 " vim-go 插件
 "==============================================================================
 let g:go_fmt_command = "goimports"
-let g:go_autodetect_gopath = 1
-let g:go_list_type = "quickfix"
-let g:go_version_warning = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_generate_tags = 1
-let g:godef_split=2
 
 "==============================================================================
 "  markdown 插件
