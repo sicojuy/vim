@@ -23,7 +23,13 @@ set scrolloff=10
 set history=1000
 
 " 补全配置
-set completeopt=popup,longest,menu
+set completeopt=menu,preview,longest
+
+" 自动关闭补全预览窗口
+augroup complete
+  autocmd!
+  autocmd CompleteDone * pclose
+augroup end
 
 " tab 缩进
 set expandtab " tab替换成空格
