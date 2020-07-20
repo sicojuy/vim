@@ -38,10 +38,7 @@ set shiftwidth=4 " 设置自动缩进长度为4空格
 set autoindent " 继承前一行的缩进方式，适用于多行注释
 
 autocmd FileType go setlocal noexpandtab
-autocmd FileType javascript setlocal tabstop=2 shiftwidth=2
-autocmd FileType html setlocal tabstop=2 shiftwidth=2
-autocmd FileType vue setlocal tabstop=2 shiftwidth=2
-autocmd FileType json setlocal tabstop=2 shiftwidth=2
+autocmd FileType javascript,html,vue,json setlocal tabstop=2 shiftwidth=2
 
 " 修复插入模式无法delete问题
 set backspace=indent,eol,start
@@ -185,10 +182,7 @@ let g:NERDTreeShowIgnoredStatus = 1
 "==============================================================================
 " vim-easy-align 插件
 "==============================================================================
-" Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
 "==============================================================================
