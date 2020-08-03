@@ -114,6 +114,9 @@ Plug 'fatih/vim-go'
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
 
+" thrift
+Plug 'solarnz/thrift.vim'
+
 " vue 插件
 Plug 'posva/vim-vue'
 
@@ -149,10 +152,10 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " 显示行号
-let NERDTreeShowLineNumbers=0
+let NERDTreeShowLineNumbers=1
 " 打开文件时是否显示目录
 let NERDTreeAutoCenter=0
-" 是否显示隐藏文件
+" 是否显示隐藏文件，开关：shift+i
 let NERDTreeShowHidden=0
 " 设置宽度
 let NERDTreeWinSize=30
