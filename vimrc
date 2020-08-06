@@ -76,6 +76,13 @@ autocmd BufWritePre * :%s/\s\+$//e
 " 退出插入模式指定类型的文件自动保存
 " au InsertLeave *.go,*.sh,*.py,*.c,*.cpp write
 
+" 窗口切换
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+map <C-c> <C-w>c
+
 syntax enable
 syntax on                    " 开启文件类型侦测
 filetype plugin indent on    " 启用自动补全
@@ -141,16 +148,12 @@ set background=dark " 主题背景 dark or light
 " 打开和关闭NERDTree快捷键
 map <Leader>n :NERDTreeToggle<CR>
 
-" 窗口切换
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
 " 没有指定文件/目录时，自动启动NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+" 不显示帮助提示
+let NERDTreeMinimalUI=1
 " 显示行号
 let NERDTreeShowLineNumbers=1
 " 打开文件时是否显示目录
@@ -163,6 +166,8 @@ let NERDTreeWinSize=30
 let NERDTreeIgnore=['\.pyc','\~$','\.swp']
 " 打开 vim 文件及显示书签列表
 let NERDTreeShowBookmarks=0
+" 打开帮助
+let NERDTreeMapHelp='H'
 
 "==============================================================================
 "  nerdtree-git-plugin 插件
