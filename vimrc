@@ -23,7 +23,7 @@ set scrolloff=10
 set history=1000
 
 " 补全配置
-set completeopt=menu,preview,longest
+set completeopt=menu,menuone
 
 " 自动关闭补全预览窗口
 augroup complete
@@ -197,11 +197,13 @@ nmap ga <Plug>(EasyAlign)
 "  Valloric/YouCompleteMe 插件
 "==============================================================================
 let g:ycm_global_ycm_extra_conf = "~/.vim/ycm_extra_conf.py"
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_max_num_candidates = 20
 
 "==============================================================================
 " vim-go 插件
 "==============================================================================
-let g:go_fmt_command = "goimports"
+" let g:go_fmt_command = "goimports"
 
 "==============================================================================
 "  markdown 插件
