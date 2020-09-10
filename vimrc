@@ -185,8 +185,6 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
-let g:NERDTreeGitStatusShowIgnored = 1
-
 "==============================================================================
 " vim-easy-align 插件
 "==============================================================================
