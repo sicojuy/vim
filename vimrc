@@ -67,6 +67,14 @@ set viminfo+=!
 " 单词分隔符
 set iskeyword+=_,$,@,%,#,-
 
+" 命令模式快捷键
+cnoremap <C-A> <Home>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+cnoremap <C-R> <C-F>
+
 " 打开上次编辑的位置
 au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
@@ -116,6 +124,7 @@ Plug 'Valloric/YouCompleteMe'
 
 " go 主要插件
 Plug 'fatih/vim-go'
+Plug 'sebdah/vim-delve'
 
 " markdown 插件
 Plug 'iamcco/mathjax-support-for-mkdp'
