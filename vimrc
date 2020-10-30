@@ -125,6 +125,7 @@ Plug 'Valloric/YouCompleteMe'
 " go 主要插件
 Plug 'fatih/vim-go'
 Plug 'sebdah/vim-delve'
+Plug 'buoto/gotests-vim', {'do': 'go get -u github.com/cweill/gotests/...'}
 
 " markdown 插件
 Plug 'iamcco/mathjax-support-for-mkdp'
