@@ -206,7 +206,9 @@ nmap ga <Plug>(EasyAlign)
 "==============================================================================
 let g:ycm_global_ycm_extra_conf = "~/.vim/ycm_extra_conf.py"
 let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_max_num_candidates = 20
+let g:ycm_gopls_binary_path = "gopls"
+" let g:ycm_max_num_candidates = 20
+" let g:ycm_gopls_args = ['-vv', '-profile.cpu=/tmp/cpu.pprof']
 
 "==============================================================================
 " vim-go 插件
