@@ -165,7 +165,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " 不显示帮助提示
 let NERDTreeMinimalUI=1
 " 显示行号
-let NERDTreeShowLineNumbers=1
+let NERDTreeShowLineNumbers=0
 " 打开文件时是否显示目录
 let NERDTreeAutoCenter=0
 " 是否显示隐藏文件，开关：shift+i
