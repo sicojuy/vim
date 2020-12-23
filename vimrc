@@ -85,11 +85,23 @@ autocmd BufWritePre * :%s/\s\+$//e
 " au InsertLeave *.go,*.sh,*.py,*.c,*.cpp write
 
 " 窗口切换
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-map <C-c> <C-w>c
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-c> <C-w>c
+
+" 切换标签
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
 
 syntax enable
 syntax on                    " 开启文件类型侦测
@@ -134,6 +146,9 @@ Plug 'iamcco/markdown-preview.vim'
 " thrift
 Plug 'solarnz/thrift.vim'
 
+" buffer expplorer
+Plug 'jlanzarotta/bufexplorer'
+
 " vue 插件
 Plug 'posva/vim-vue'
 
@@ -171,10 +186,10 @@ let NERDTreeAutoCenter=0
 " 是否显示隐藏文件，开关：shift+i
 let NERDTreeShowHidden=0
 " 设置宽度
-let NERDTreeWinSize=30
+let NERDTreeWinSize=25
 " 忽略一下文件的显示
 let NERDTreeIgnore=['\.pyc','\~$','\.swp']
-" 打开 vim 文件及显示书签列表
+" 显示书签列表
 let NERDTreeShowBookmarks=0
 " 打开帮助
 let NERDTreeMapHelp='H'
