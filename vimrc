@@ -125,6 +125,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " 可以在文档中显示git信息
 Plug 'airblade/vim-gitgutter'
 
+" git工具
+Plug 'tpope/vim-fugitive'
+
 " Vim状态栏插件，包括显示行号，列号，文件类型，文件名，以及Git状态
 Plug 'vim-airline/vim-airline'
 
