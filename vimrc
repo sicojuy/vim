@@ -2,40 +2,29 @@
 " vim 内置配置
 "==============================================================================
 set nocompatible " 关闭兼容模式
-set nu " 设置行号
-set cursorline " 突出显示当前行
-"set cursorcolumn " 突出显示当前列
-set showmatch " 显示括号匹配
-set noeb " 不要提示音
-set incsearch " 实时搜索
-set ignorecase " 搜索忽略大小写
-set smartcase " 如果有一个大写字母，则大小写敏感查找
-set hlsearch " 高亮搜索关键词
-set nobackup " 不要备份文件
-set noswapfile " 不要swap文件
-set confirm " 退出确认
-set wildmenu " 命令行补全提示
-
-" 保持在光标上下的最少行数
-set scrolloff=10
-
-" 命令历史数
-set history=1000
+set nu           " 设置行号
+set cursorline   " 突出显示当前行
+set showmatch    " 显示括号匹配
+set noeb         " 不要提示音
+set incsearch    " 实时搜索
+set ignorecase   " 搜索忽略大小写
+set smartcase    " 如果有一个大写字母，则大小写敏感查找
+set hlsearch     " 高亮搜索关键词
+set nobackup     " 不要备份文件
+set noswapfile   " 不要swap文件
+set confirm      " 退出确认
+set wildmenu     " 命令行补全提示
+set scrolloff=10 " 保持在光标上下的最少行数
+set history=1000 " 命令历史数
 
 " 补全配置
 set completeopt=menu,menuone
 
-" 自动关闭补全预览窗口
-augroup complete
-  autocmd!
-  autocmd CompleteDone * pclose
-augroup end
-
 " tab 缩进
-set expandtab " tab替换成空格
-set tabstop=4 " 设置Tab长度为4空格
+set expandtab    " tab替换成空格
+set tabstop=4    " 设置Tab长度为4空格
 set shiftwidth=4 " 设置自动缩进长度为4空格
-set autoindent " 继承前一行的缩进方式，适用于多行注释
+set autoindent   " 继承前一行的缩进方式，适用于多行注释
 
 autocmd FileType go setlocal noexpandtab
 autocmd FileType javascript,html,vue,json setlocal tabstop=2 shiftwidth=2
@@ -196,22 +185,6 @@ let NERDTreeIgnore=['\.pyc','\~$','\.swp']
 let NERDTreeShowBookmarks=0
 " 打开帮助
 let NERDTreeMapHelp='H'
-
-"==============================================================================
-"  nerdtree-git-plugin 插件
-"==============================================================================
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
 
 "==============================================================================
 " vim-easy-align 插件
