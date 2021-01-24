@@ -108,13 +108,9 @@ Plug 'morhetz/gruvbox'
 " 用来提供一个导航目录的侧边栏
 Plug 'scrooloose/nerdtree'
 
-" 可以在导航目录中看到git信息
+" git相关插件
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" 可以在文档中显示git信息
 Plug 'airblade/vim-gitgutter'
-
-" git工具
 Plug 'tpope/vim-fugitive'
 
 " Vim状态栏插件，包括显示行号，列号，文件类型，文件名，以及Git状态
@@ -123,10 +119,10 @@ Plug 'vim-airline/vim-airline'
 " 可以快速对齐的插件
 Plug 'junegunn/vim-easy-align'
 
-" 代码自动完成，安装完插件还需要额外配置才可以使用
+" 代码补全
 Plug 'Valloric/YouCompleteMe'
 
-" go 主要插件
+" go插件
 Plug 'fatih/vim-go'
 Plug 'sebdah/vim-delve'
 Plug 'buoto/gotests-vim', {'do': 'go get -u github.com/cweill/gotests/...'}
@@ -141,10 +137,10 @@ Plug 'solarnz/thrift.vim'
 " buffer expplorer
 Plug 'jlanzarotta/bufexplorer'
 
-" vue 插件
+" vue插件
 Plug 'posva/vim-vue'
 
-" js 插件
+" js插件
 Plug 'pangloss/vim-javascript'
 
 " 插件结束的位置，插件全部放在此行上面
