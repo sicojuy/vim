@@ -137,8 +137,9 @@ Plug 'solarnz/thrift.vim'
 " buffer expplorer
 Plug 'jlanzarotta/bufexplorer'
 
-" vue插件
-Plug 'posva/vim-vue'
+" vim session
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
 
 " js插件
 Plug 'pangloss/vim-javascript'
@@ -207,3 +208,9 @@ let g:ycm_gopls_binary_path = "gopls"
 "==============================================================================
 map <silent> <Leader>m <Plug>MarkdownPreview
 
+"==============================================================================
+" vim session 插件
+"==============================================================================
+let g:session_command_aliases = 1
+let g:session_autosave = "yes"
+let g:session_directory = "~/.vimsessions"
