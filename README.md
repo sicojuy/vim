@@ -1,20 +1,18 @@
-# vim
+vim
+===
 
-配置Vim开发环境，主要开发语言:
-
-* Golang
-* C/C++
-* Python
-
-# 环境依赖
+环境依赖
+--------
 
 * vim >= 8.0
 * python3
 * build-essential
 * cmake
 * python3-dev
+* rg
 
-## 开始
+开始
+----
 
 ```bash
 git clone https://github.com/sicojuy/vim.git ~/.vim

@@ -105,44 +105,40 @@ call plug#begin('~/.vim/plugged')
 " 配色方案
 Plug 'morhetz/gruvbox'
 
-" 用来提供一个导航目录的侧边栏
+" 目录侧边栏
 Plug 'scrooloose/nerdtree'
 
-" git相关插件
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-
-" Vim状态栏插件，包括显示行号，列号，文件类型，文件名，以及Git状态
+" 状态栏
 Plug 'vim-airline/vim-airline'
 
-" 可以快速对齐的插件
+" 文本对齐
 Plug 'junegunn/vim-easy-align'
 
 " 代码补全
 Plug 'Valloric/YouCompleteMe'
+
+" 检索插件
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+
+" markdown 插件
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
+
+" git插件
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " go插件
 Plug 'fatih/vim-go'
 Plug 'sebdah/vim-delve'
 Plug 'buoto/gotests-vim', {'do': 'go get -u github.com/cweill/gotests/...'}
 
-" markdown 插件
-Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.vim'
-
-" thrift
-Plug 'solarnz/thrift.vim'
-
-" buffer expplorer
-Plug 'jlanzarotta/bufexplorer'
-
-" vim session
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
-
 " js插件
 Plug 'pangloss/vim-javascript'
+
+" thrift插件
+Plug 'solarnz/thrift.vim'
 
 " 插件结束的位置，插件全部放在此行上面
 call plug#end()
@@ -150,7 +146,7 @@ call plug#end()
 "==============================================================================
 " 主题配色
 "==============================================================================
-" 开启24bit的颜色，开启这个颜色会更漂亮一些
+" 开启24bit的颜色
 set termguicolors
 " 配色方案, 可以从上面插件安装中的选择一个使用
 colorscheme gruvbox " 主题
@@ -184,6 +180,22 @@ let NERDTreeShowBookmarks=0
 let NERDTreeMapHelp='H'
 
 "==============================================================================
+" LeaderF 插件
+"==============================================================================
+let g:Lf_HideHelp = 1
+let g:Lf_ShowDevIcons = 0
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+
+let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf! rg -e %s", expand("<cword>"))<CR>
+noremap <leader>fo :<C-U>Leaderf! rg --recall<CR>
+
+"==============================================================================
 " vim-easy-align 插件
 "==============================================================================
 xmap ga <Plug>(EasyAlign)
@@ -207,10 +219,3 @@ let g:ycm_gopls_binary_path = "gopls"
 "  markdown 插件
 "==============================================================================
 map <silent> <Leader>m <Plug>MarkdownPreview
-
-"==============================================================================
-" vim session 插件
-"==============================================================================
-let g:session_command_aliases = 1
-let g:session_autosave = "yes"
-let g:session_directory = "~/.vimsessions"
