@@ -75,8 +75,8 @@ endif
 
 " 打开文件时恢复上一次光标所在位置
 autocmd BufReadPost *
-	\ if line("'\"") > 1 && line("'\"") <= line("$") |
-	\	 exe "normal! g`\"" |
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \	 exe "normal! g`\"" |
     \ endif
 
 " 保存时自动清除尾部空白符
