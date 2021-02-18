@@ -251,7 +251,7 @@ call plug#end()
 "--------------------------------------------------------------------------------
 
 colorscheme gruvbox
-set termguicolors 	" 开启24bit的颜色
+set termguicolors   " 开启24bit的颜色
 set background=dark " 主题背景 dark or light
 
 "--------------------------------------------------------------------------------
