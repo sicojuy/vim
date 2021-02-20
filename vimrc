@@ -1,4 +1,61 @@
 "================================================================================
+" 安装插件
+"================================================================================
+
+call plug#begin('~/.vim/plugged')
+
+" 主题配色
+Plug 'morhetz/gruvbox'
+
+" 侧边栏
+Plug 'scrooloose/nerdtree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" 状态栏
+Plug 'vim-airline/vim-airline'
+
+" 文本对齐
+Plug 'junegunn/vim-easy-align'
+
+" 全文快速移动
+Plug 'easymotion/vim-easymotion'
+
+" 代码补全
+Plug 'Valloric/YouCompleteMe'
+
+" 检索
+Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+
+" markdown
+Plug 'iamcco/mathjax-support-for-mkdp'
+Plug 'iamcco/markdown-preview.vim'
+
+" git
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+
+" go
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'sebdah/vim-delve'
+Plug 'buoto/gotests-vim', {'do': 'go get -u github.com/cweill/gotests/...'}
+
+" js
+Plug 'pangloss/vim-javascript'
+
+" thrift
+Plug 'solarnz/thrift.vim'
+
+" lua
+Plug 'tbastos/vim-lua', { 'for': 'lua' }
+
+" python
+Plug 'vim-python/python-syntax', { 'for': 'python' }
+
+" 插件结束的位置，插件全部放在此行上面
+call plug#end()
+
+"================================================================================
 " 基础配置
 "================================================================================
 
@@ -15,8 +72,8 @@ set nobackup                          " 不要备份文件
 set noswapfile                        " 不要swap文件
 set confirm                           " 退出确认
 set wildmenu                          " 命令行补全提示
-set splitright                        " 水平分隔窗口时在右边
-set splitbelow                        " 垂直分隔窗口时在下面
+"set splitright                        " 水平分隔窗口时在右边
+"set splitbelow                        " 垂直分隔窗口时在下面
 set lazyredraw                        " 延迟绘制（提升性能）
 set display=lastline                  " 显示最后一行
 set scrolloff=10                      " 保持在光标上下的最少行数
@@ -44,9 +101,6 @@ set viminfo+=!
 
 " 单词分隔符
 set iskeyword+=_,$,@,%,#,-
-
-" 设置分隔符可视
-set listchars=tab:\|\ ,trail:.,extends:>,precedes:<
 
 " 设置 tags：当前文件所在目录往上向根目录搜索直到碰到 .tags 文件
 " 或者 Vim 当前目录包含 .tags 文件
@@ -103,144 +157,6 @@ set wildignore+=*.ppt,*.pptx,*.docx,*.xlt,*.xls,*.xlsx,*.odt,*.wps
 set wildignore+=*.msi,*.crx,*.deb,*.vfd,*.apk,*.ipa,*.bin,*.msu
 set wildignore+=*.gba,*.sfc,*.078,*.nds,*.smd,*.smc
 set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
-
-"================================================================================
-" 按键映射
-"================================================================================
-
-"--------------------------------------------------------------------------------
-" 系统复制粘贴
-"--------------------------------------------------------------------------------
-
-vmap <Leader>y "+y
-nmap <Leader>y "+yy
-nmap <Leader>p "+p
-
-"--------------------------------------------------------------------------------
-" 插入模式快捷键
-"--------------------------------------------------------------------------------
-
-inoremap <C-a> <Home>
-inoremap <C-f> <Right>
-inoremap <C-b> <Left>
-inoremap <C-e> <End>
-
-"--------------------------------------------------------------------------------
-" 命令模式快捷键
-"--------------------------------------------------------------------------------
-
-cnoremap <C-a> <Home>
-cnoremap <C-f> <Right>
-cnoremap <C-b> <Left>
-cnoremap <C-e> <End>
-cnoremap <Esc>b <S-Left>
-cnoremap <Esc>f <S-Right>
-
-"--------------------------------------------------------------------------------
-" 窗口切换
-"--------------------------------------------------------------------------------
-
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
-noremap <C-c> <C-w>c
-
-"--------------------------------------------------------------------------------
-" 标签快捷键
-"--------------------------------------------------------------------------------
-
-function! Tab_MoveLeft()
-	let l:tabnr = tabpagenr() - 2
-	if l:tabnr >= 0
-		exec 'tabmove '.l:tabnr
-	endif
-endfunc
-
-function! Tab_MoveRight()
-	let l:tabnr = tabpagenr() + 1
-	if l:tabnr <= tabpagenr('$')
-		exec 'tabmove '.l:tabnr
-	endif
-endfunc
-
-noremap <silent> <leader>1 1gt
-noremap <silent> <leader>2 2gt
-noremap <silent> <leader>3 3gt
-noremap <silent> <leader>4 4gt
-noremap <silent> <leader>5 5gt
-noremap <silent> <leader>6 6gt
-noremap <silent> <leader>7 7gt
-noremap <silent> <leader>8 8gt
-noremap <silent> <leader>9 9gt
-noremap <silent> <leader>0 :tablast<cr>
-noremap <silent> <leader>tt :tabnew<cr>
-noremap <silent> <leader>tq :tabclose<cr>
-noremap <silent> <leader>tn :tabnext<cr>
-noremap <silent> <leader>tp :tabprev<cr>
-noremap <silent> <leader>to :tabonly<cr>
-noremap <silent> <leader>tl :call Tab_MoveLeft()<cr>
-noremap <silent> <leader>tr :call Tab_MoveRight()<cr>
-
-"================================================================================
-" 安装插件
-"================================================================================
-
-call plug#begin('~/.vim/plugged')
-
-" 主题配色
-Plug 'morhetz/gruvbox'
-
-" 侧边栏
-Plug 'scrooloose/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-" 状态栏
-Plug 'vim-airline/vim-airline'
-
-" 文本对齐
-Plug 'junegunn/vim-easy-align'
-
-" 全文快速移动
-Plug 'easymotion/vim-easymotion'
-
-" 代码补全
-Plug 'Valloric/YouCompleteMe'
-
-" 检索
-Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
-
-" markdown
-Plug 'iamcco/mathjax-support-for-mkdp'
-Plug 'iamcco/markdown-preview.vim'
-
-" git
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-
-" go
-Plug 'fatih/vim-go'
-Plug 'sebdah/vim-delve'
-Plug 'buoto/gotests-vim', {'do': 'go get -u github.com/cweill/gotests/...'}
-
-" js
-Plug 'pangloss/vim-javascript'
-
-" thrift
-Plug 'solarnz/thrift.vim'
-
-" lua 语法高亮增强
-Plug 'tbastos/vim-lua', { 'for': 'lua' }
-
-" 额外语法文件
-Plug 'justinmk/vim-syntax-extra', { 'for': ['c', 'bison', 'flex', 'cpp'] }
-
-" python 语法文件增强
-Plug 'vim-python/python-syntax', { 'for': ['python'] }
-
-" 插件结束的位置，插件全部放在此行上面
-call plug#end()
 
 "================================================================================
 " 插件配置
@@ -321,7 +237,6 @@ let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_gopls_binary_path = "gopls"
-" let g:ycm_gopls_args = ['-vv', '-profile.cpu=/tmp/cpu.pprof']
 
 " 白名单（非名单内文件不启用 YCM），避免打开个 1MB 的 txt 分析半天
 let g:ycm_filetype_whitelist = {
@@ -381,12 +296,111 @@ let g:ycm_filetype_whitelist = {
 
 " 两个字符自动触发语义补全
 let g:ycm_semantic_triggers =  {
-    \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-    \ 'cs,lua,javascript': ['re!\w{2}'],
+    \ 'c,cpp,cs,python,java,go,erlang,perl,lua,javascript': ['re!\w{2}'],
     \ }
+
+"--------------------------------------------------------------------------------
+" go
+"--------------------------------------------------------------------------------
+
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
 
 "--------------------------------------------------------------------------------
 " markdown
 "--------------------------------------------------------------------------------
 
 map <silent> <Leader>m <Plug>MarkdownPreview
+
+"--------------------------------------------------------------------------------
+" python
+"--------------------------------------------------------------------------------
+
+let g:python_highlight_all = 1
+
+"================================================================================
+" 按键映射
+"================================================================================
+
+"--------------------------------------------------------------------------------
+" 系统复制粘贴
+"--------------------------------------------------------------------------------
+
+vmap <Leader>y "+y
+nmap <Leader>y "+yy
+nmap <Leader>p "+p
+
+"--------------------------------------------------------------------------------
+" 插入模式快捷键
+"--------------------------------------------------------------------------------
+
+inoremap <C-a> <Home>
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+inoremap <C-e> <End>
+
+"--------------------------------------------------------------------------------
+" 命令模式快捷键
+"--------------------------------------------------------------------------------
+
+cnoremap <C-a> <Home>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+cnoremap <C-e> <End>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+
+"--------------------------------------------------------------------------------
+" 窗口切换
+"--------------------------------------------------------------------------------
+
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+noremap <C-c> <C-w>c
+noremap <leader>wh <C-w>H
+noremap <leader>wj <C-w>J
+noremap <leader>wk <C-w>K
+noremap <leader>wl <C-w>L
+
+"--------------------------------------------------------------------------------
+" 标签快捷键
+"--------------------------------------------------------------------------------
+
+function! Tab_MoveLeft()
+	let l:tabnr = tabpagenr() - 2
+	if l:tabnr >= 0
+		exec 'tabmove '.l:tabnr
+	endif
+endfunc
+
+function! Tab_MoveRight()
+	let l:tabnr = tabpagenr() + 1
+	if l:tabnr <= tabpagenr('$')
+		exec 'tabmove '.l:tabnr
+	endif
+endfunc
+
+noremap <silent> <leader>1 1gt
+noremap <silent> <leader>2 2gt
+noremap <silent> <leader>3 3gt
+noremap <silent> <leader>4 4gt
+noremap <silent> <leader>5 5gt
+noremap <silent> <leader>6 6gt
+noremap <silent> <leader>7 7gt
+noremap <silent> <leader>8 8gt
+noremap <silent> <leader>9 9gt
+noremap <silent> <leader>0 :tablast<cr>
+noremap <silent> <leader>tt :tabnew<cr>
+noremap <silent> <leader>tq :tabclose<cr>
+noremap <silent> <leader>tn :tabnext<cr>
+noremap <silent> <leader>tp :tabprev<cr>
+noremap <silent> <leader>to :tabonly<cr>
+noremap <silent> <leader>tl :call Tab_MoveLeft()<cr>
+noremap <silent> <leader>tr :call Tab_MoveRight()<cr>
+
