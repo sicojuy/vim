@@ -36,21 +36,21 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " go
-Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'fatih/vim-go'
 Plug 'sebdah/vim-delve'
 Plug 'buoto/gotests-vim', {'do': 'go get -u github.com/cweill/gotests/...'}
-
-" js
-Plug 'pangloss/vim-javascript'
 
 " thrift
 Plug 'solarnz/thrift.vim'
 
-" lua
-Plug 'tbastos/vim-lua', { 'for': 'lua' }
+" js
+Plug 'pangloss/vim-javascript'
 
 " python
-Plug 'vim-python/python-syntax', { 'for': 'python' }
+Plug 'vim-python/python-syntax'
+
+" lua
+Plug 'tbastos/vim-lua'
 
 " 插件结束的位置，插件全部放在此行上面
 call plug#end()
