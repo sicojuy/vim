@@ -41,5 +41,5 @@ vim -c "GoInstallBinaries"
 安装YouCompleteMe
 ```bash
 cd ~/.vim/plugged/YouCompleteMe
-python3 install.py --clang-completer --go-completer --ts-completer
+python3 install.py --clangd-completer --go-completer
 ```
