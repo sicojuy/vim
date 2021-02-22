@@ -9,7 +9,6 @@ Plug 'morhetz/gruvbox'
 
 " 侧边栏
 Plug 'scrooloose/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " 状态栏
 Plug 'vim-airline/vim-airline'
@@ -108,29 +107,29 @@ set tags=./.tags;,.tags
 
 " 编码
 if has('multi_byte')
-	" 内部工作编码
-	set encoding=utf-8
-	" 文件默认编码
-	set fileencoding=utf-8
-	" 打开文件时自动尝试下面顺序的编码
-	set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,ecu-kr,latin1
+    " 内部工作编码
+    set encoding=utf-8
+    " 文件默认编码
+    set fileencoding=utf-8
+    " 打开文件时自动尝试下面顺序的编码
+    set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,ecu-kr,latin1
 endif
 
 " 允许 Vim 自带脚本根据文件类型自动设置缩进等
 if has('autocmd')
-	filetype plugin indent on
+    filetype plugin indent on
 endif
 
 " 语法高亮设置
 if has('syntax')
-	syntax enable
-	syntax on
+    syntax enable
+    syntax on
 endif
 
 " 打开文件时恢复上一次光标所在位置
 autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \	 exe "normal! g`\"" |
+    \     exe "normal! g`\"" |
     \ endif
 
 " 保存时自动清除尾部空白符
@@ -200,9 +199,9 @@ let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
 
 " 模糊匹配忽略扩展名
 let g:Lf_WildIgnore = {
-	\ 'dir': ['.svn', '.git', '.hg'],
-	\ 'file': ['*.sw?', '~$*', '*.bak', '*.exe', '*.o', '*.so', '*.py[co]']
-	\ }
+    \ 'dir': ['.svn', '.git', '.hg'],
+    \ 'file': ['*.sw?', '~$*', '*.bak', '*.exe', '*.o', '*.so', '*.py[co]']
+    \ }
 
 " MRU 文件忽略扩展名
 let g:Lf_MruFileExclude = ['*.so', '*.exe', '*.py[co]', '*.sw?', '~$*', '*.bak', '*.tmp', '*.dll']
@@ -373,17 +372,17 @@ noremap <leader>wl <C-w>L
 "--------------------------------------------------------------------------------
 
 function! Tab_MoveLeft()
-	let l:tabnr = tabpagenr() - 2
-	if l:tabnr >= 0
-		exec 'tabmove '.l:tabnr
-	endif
+    let l:tabnr = tabpagenr() - 2
+    if l:tabnr >= 0
+        exec 'tabmove '.l:tabnr
+    endif
 endfunc
 
 function! Tab_MoveRight()
-	let l:tabnr = tabpagenr() + 1
-	if l:tabnr <= tabpagenr('$')
-		exec 'tabmove '.l:tabnr
-	endif
+    let l:tabnr = tabpagenr() + 1
+    if l:tabnr <= tabpagenr('$')
+        exec 'tabmove '.l:tabnr
+    endif
 endfunc
 
 noremap <silent> <leader>1 1gt
