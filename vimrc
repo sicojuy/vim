@@ -195,6 +195,8 @@ let g:Lf_HideHelp = 1
 let g:Lf_ShowDevIcons = 0
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
+let g:Lf_StlColorscheme = 'gruvbox_material'
+let g:Lf_WorkingDirectoryMode = 'AF'
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
 
 " 模糊匹配忽略扩展名
@@ -205,17 +207,18 @@ let g:Lf_WildIgnore = {
 
 " MRU 文件忽略扩展名
 let g:Lf_MruFileExclude = ['*.so', '*.exe', '*.py[co]', '*.sw?', '~$*', '*.bak', '*.tmp', '*.dll']
-let g:Lf_StlColorscheme = 'powerline'
 
 " 禁用 function/buftag 的预览功能，可以手动用 p 预览
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 
 " 快捷键
-let g:Lf_ShortcutF = "<leader>ff"
-noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
-noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
-noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
-noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+let g:Lf_ShortcutF = "<c-p>"
+noremap <leader>f :<C-U><C-R>=printf("LeaderfSelf %s", "")<CR><CR>
+noremap <leader>ff :<C-U><C-R>=printf("LeaderfFunction %s", "")<CR><CR>
+noremap <leader>fb :<C-U><C-R>=printf("LeaderfBuffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("LeaderfMruCwd %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("LeaderfBufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("LeaderfLine %s", "")<CR><CR>
 noremap <leader>fr :<C-U><C-R>=printf("Leaderf! rg -e %s", expand("<cword>"))<CR>
 noremap <leader>fo :<C-U>Leaderf! rg --recall<CR>
 
