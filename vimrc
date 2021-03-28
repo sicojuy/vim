@@ -101,10 +101,6 @@ set viminfo+=!
 " 单词分隔符
 set iskeyword+=_,$,@,%,#,-
 
-" 设置 tags：当前文件所在目录往上向根目录搜索直到碰到 .tags 文件
-" 或者 Vim 当前目录包含 .tags 文件
-set tags=./.tags;,.tags
-
 " 编码
 if has('multi_byte')
     " 内部工作编码
@@ -214,7 +210,7 @@ let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 " 快捷键
 let g:Lf_ShortcutF = "<c-p>"
 noremap <leader>f :<C-U><C-R>=printf("LeaderfSelf %s", "")<CR><CR>
-noremap <leader>ff :<C-U><C-R>=printf("LeaderfFunction %s", "")<CR><CR>
+noremap <leader>ff :<C-U><C-R>=printf("LeaderfFile %s", "")<CR><CR>
 noremap <leader>fb :<C-U><C-R>=printf("LeaderfBuffer %s", "")<CR><CR>
 noremap <leader>fm :<C-U><C-R>=printf("LeaderfMruCwd %s", "")<CR><CR>
 noremap <leader>ft :<C-U><C-R>=printf("LeaderfBufTag %s", "")<CR><CR>
