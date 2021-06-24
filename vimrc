@@ -207,6 +207,16 @@ let g:Lf_MruFileExclude = ['*.so', '*.exe', '*.py[co]', '*.sw?', '~$*', '*.bak',
 " 禁用 function/buftag 的预览功能，可以手动用 p 预览
 let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 
+" RG搜索配置
+let g:Lf_RgConfig = [
+    \ "--glob=!output/*",
+    \ "--glob=!git/*",
+    \ "--glob=!mock/*",
+    \ "--glob=!thrift_gen/*",
+    \ "--glob=!kitex_gen/*",
+    \ "--glob=!*_test.go"
+\ ]
+
 " 快捷键
 let g:Lf_ShortcutF = "<c-p>"
 noremap <leader>f :<C-U><C-R>=printf("LeaderfSelf %s", "")<CR><CR>
