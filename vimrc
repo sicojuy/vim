@@ -209,11 +209,11 @@ let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 
 " RG搜索配置
 let g:Lf_RgConfig = [
-    \ "--glob=!output/*",
-    \ "--glob=!git/*",
-    \ "--glob=!mock/*",
-    \ "--glob=!thrift_gen/*",
-    \ "--glob=!kitex_gen/*",
+    \ "--glob=!output",
+    \ "--glob=!git",
+    \ "--glob=!mock",
+    \ "--glob=!thrift_gen",
+    \ "--glob=!kitex_gen",
     \ "--glob=!*_test.go"
 \ ]
 
