@@ -226,7 +226,9 @@ noremap <leader>fm :<C-U><C-R>=printf("LeaderfMruCwd %s", "")<CR><CR>
 noremap <leader>ft :<C-U><C-R>=printf("LeaderfBufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("LeaderfLine %s", "")<CR><CR>
 noremap <leader>fr :<C-U><C-R>=printf("Leaderf! rg -F %s", expand("<cword>"))<CR>
+noremap <leader>r :<C-U><C-R>=printf("Leaderf! rg -F %s", expand("<cword>"))<CR>
 noremap <leader>fo :<C-U>Leaderf! rg --recall<CR>
+noremap <leader>o :<C-U>Leaderf! rg --recall<CR>
 
 "--------------------------------------------------------------------------------
 " vim-easy-align
