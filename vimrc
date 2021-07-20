@@ -214,6 +214,7 @@ let g:Lf_RgConfig = [
     \ "--glob=!mock",
     \ "--glob=!thrift_gen",
     \ "--glob=!kitex_gen",
+    \ "--glob=!kite_gen",
     \ "--glob=!*_test.go"
 \ ]
 
@@ -331,6 +332,16 @@ map <silent> <Leader>m <Plug>MarkdownPreview
 "--------------------------------------------------------------------------------
 
 let g:python_highlight_all = 1
+
+"--------------------------------------------------------------------------------
+" json
+"--------------------------------------------------------------------------------
+
+" format json
+command -range=% JSONFormat :<line1>,<line2> ! python -m json.tool
+
+" compact json
+command -range=% JSONCompact :<line1>,<line2> s/[ \s\n\r]//g | noh
 
 "================================================================================
 " 按键映射
