@@ -51,6 +51,9 @@ Plug 'vim-python/python-syntax'
 " lua
 Plug 'tbastos/vim-lua'
 
+" rust
+Plug 'rust-lang/rust.vim'
+
 " 插件结束的位置，插件全部放在此行上面
 call plug#end()
 
@@ -212,10 +215,10 @@ let g:Lf_RgConfig = [
     \ "--glob=!output",
     \ "--glob=!git",
     \ "--glob=!mock",
+    \ "--glob=!mocks",
     \ "--glob=!thrift_gen",
     \ "--glob=!kitex_gen",
-    \ "--glob=!kite_gen",
-    \ "--glob=!*_test.go"
+    \ "--glob=!kite_gen"
 \ ]
 
 " 快捷键
