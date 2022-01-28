@@ -179,6 +179,16 @@ map <Leader>n :NERDTreeToggle<CR>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+" Open the existing NERDTree on each new tab.
+"autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
 let NERDTreeMinimalUI=1                    " 不显示帮助提示
 let NERDTreeShowLineNumbers=0              " 显示行号
 let NERDTreeAutoCenter=0                   " 打开文件时是否显示目录
@@ -214,6 +224,7 @@ let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
 let g:Lf_RgConfig = [
     \ "--glob=!output",
     \ "--glob=!git",
+    \ "--glob=!vendor",
     \ "--glob=!mock",
     \ "--glob=!mocks",
     \ "--glob=!thrift_gen",
