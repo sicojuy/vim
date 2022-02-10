@@ -7,11 +7,11 @@ call plug#begin('~/.vim/plugged')
 " 主题配色
 Plug 'morhetz/gruvbox'
 
-" 侧边栏
-Plug 'scrooloose/nerdtree'
-
 " 状态栏
 Plug 'vim-airline/vim-airline'
+
+" tab样式
+Plug 'mkitt/tabline.vim'
 
 " 文本对齐
 Plug 'junegunn/vim-easy-align'
@@ -30,14 +30,12 @@ Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
 
 " git
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 " go
 Plug 'fatih/vim-go'
 Plug 'sebdah/vim-delve'
-Plug 'buoto/gotests-vim', {'do': 'go get -u github.com/cweill/gotests/...'}
 
 " thrift
 Plug 'solarnz/thrift.vim'
@@ -85,6 +83,7 @@ set backspace=indent,eol,start        " 设置Backspace键模式
 set formatoptions+=m                  " 如遇Unicode值大于255的文本，不必等到空格再折行
 set formatoptions+=B                  " 合并两行中文时，不在中间加空格
 set ffs=unix,dos,mac                  " 文件换行符，默认使用 unix 换行符
+set showtabline=2                     " 总是显示tabline
 let mapleader=";"                     " 定义快捷键的前缀，即<Leader>
 
 " tab缩进
@@ -169,32 +168,34 @@ set termguicolors   " 开启24bit的颜色
 set background=dark " 主题背景 dark or light
 
 "--------------------------------------------------------------------------------
-" NERDTree
+" netrw
 "--------------------------------------------------------------------------------
 
-" 打开和关闭NERDTree
-map <Leader>n :NERDTreeToggle<CR>
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+let g:netrw_browse_split = 3
+let g:netrw_altv = 1
+let g:netrw_winsize = 75
+let g:netrw_chgwin = 2
+let g:netrw_errorlvl = 2
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
-" 没有指定文件/目录时，自动启动NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" 通过x收起目录
+autocmd FileType netrw nmap <buffer> x :call NetrwCollapse()<CR>
+function! NetrwCollapse()
+    redir => cnt
+        silent .s/|//gn
+    redir END
+    let lvl = substitute(cnt, '\n', '', '')[0:0] - 1
+    exec '?^\(| \)\{' . lvl . '\}\w'
+    exec "normal \<CR>"
+endfunction
 
-" Open the existing NERDTree on each new tab.
-"autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
-
-" Close the tab if NERDTree is the only window remaining in it.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
-
-let NERDTreeMinimalUI=1                    " 不显示帮助提示
-let NERDTreeShowLineNumbers=0              " 显示行号
-let NERDTreeAutoCenter=0                   " 打开文件时是否显示目录
-let NERDTreeWinSize=25                     " 设置宽度
-let NERDTreeIgnore=['\.pyc','\~$','\.swp'] " 忽略一下文件的显示
-let NERDTreeMapHelp='H'                    " 打开帮助
+augroup ProjectDrawer
+  autocmd!
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Explore | endif
+augroup END
 
 "--------------------------------------------------------------------------------
 " LeaderF
@@ -241,9 +242,7 @@ noremap <leader>fm :<C-U><C-R>=printf("LeaderfMruCwd %s", "")<CR><CR>
 noremap <leader>ft :<C-U><C-R>=printf("LeaderfBufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("LeaderfLine %s", "")<CR><CR>
 noremap <leader>fr :<C-U><C-R>=printf("Leaderf! rg -F %s", expand("<cword>"))<CR>
-noremap <leader>r :<C-U><C-R>=printf("Leaderf! rg -F %s", expand("<cword>"))<CR>
 noremap <leader>fo :<C-U>Leaderf! rg --recall<CR>
-noremap <leader>o :<C-U>Leaderf! rg --recall<CR>
 
 "--------------------------------------------------------------------------------
 " vim-easy-align
@@ -262,6 +261,7 @@ let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_gopls_binary_path = "gopls"
+let g:ycm_gopls_args = []
 
 " 白名单（非名单内文件不启用 YCM），避免打开个 1MB 的 txt 分析半天
 let g:ycm_filetype_whitelist = {
@@ -393,6 +393,7 @@ cnoremap <Esc>f <S-Right>
 " 窗口切换
 "--------------------------------------------------------------------------------
 
+autocmd filetype netrw noremap <buffer> <C-l> <C-w>l
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
@@ -431,11 +432,11 @@ noremap <silent> <leader>7 7gt
 noremap <silent> <leader>8 8gt
 noremap <silent> <leader>9 9gt
 noremap <silent> <leader>0 :tablast<cr>
+noremap <silent> <leader>tl :tabnext<cr>
+noremap <silent> <leader>th :tabprev<cr>
 noremap <silent> <leader>tt :tabnew<cr>
 noremap <silent> <leader>tq :tabclose<cr>
-noremap <silent> <leader>tn :tabnext<cr>
-noremap <silent> <leader>tp :tabprev<cr>
 noremap <silent> <leader>to :tabonly<cr>
-noremap <silent> <leader>tl :call Tab_MoveLeft()<cr>
-noremap <silent> <leader>tr :call Tab_MoveRight()<cr>
+noremap <silent> <leader>th :call Tab_MoveLeft()<cr>
+noremap <silent> <leader>tl :call Tab_MoveRight()<cr>
 
