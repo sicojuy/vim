@@ -173,12 +173,13 @@ set background=dark " 主题背景 dark or light
 
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
-let g:netrw_browse_split = 3
+let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 let g:netrw_winsize = 75
-let g:netrw_chgwin = 2
 let g:netrw_errorlvl = 2
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+
+autocmd filetype netrw noremap <buffer> o <Nop>
 
 " 通过x收起目录
 autocmd FileType netrw nmap <buffer> x :call NetrwCollapse()<CR>
