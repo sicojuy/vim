@@ -181,14 +181,24 @@ let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
 autocmd filetype netrw noremap <buffer> o <Nop>
 
-" 通过x收起目录
-autocmd FileType netrw nmap <buffer> x :call NetrwCollapse()<CR>
+autocmd FileType netrw noremap <buffer> p :call NetrwToParent()<CR>
+
+autocmd FileType netrw noremap <buffer> x :call NetrwCollapse()<CR>
+
+function! NetrwToParent()
+    let line = getline('.')
+    let cnt = count(line, '| ')
+    let pat = '^'
+    while cnt > 1
+        let pat = pat . '| '
+        let cnt = cnt - 1
+    endwhile
+    let pat = pat . '\w'
+    call search(pat, 'b')
+endfunction
+
 function! NetrwCollapse()
-    redir => cnt
-        silent .s/|//gn
-    redir END
-    let lvl = substitute(cnt, '\n', '', '')[0:0] - 1
-    exec '?^\(| \)\{' . lvl . '\}\w'
+    call NetrwToParent()
     exec "normal \<CR>"
 endfunction
 
@@ -433,8 +443,8 @@ noremap <silent> <leader>7 7gt
 noremap <silent> <leader>8 8gt
 noremap <silent> <leader>9 9gt
 noremap <silent> <leader>0 :tablast<cr>
-noremap <silent> <leader>tl :tabnext<cr>
-noremap <silent> <leader>th :tabprev<cr>
+noremap <silent> <leader>tn :tabnext<cr>
+noremap <silent> <leader>tp :tabprev<cr>
 noremap <silent> <leader>tt :tabnew<cr>
 noremap <silent> <leader>tq :tabclose<cr>
 noremap <silent> <leader>to :tabonly<cr>
