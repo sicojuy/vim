@@ -10,14 +10,14 @@ Plug 'morhetz/gruvbox'
 " 状态栏
 Plug 'vim-airline/vim-airline'
 
-" tab样式
-Plug 'mkitt/tabline.vim'
-
 " 文本对齐
 Plug 'junegunn/vim-easy-align'
 
 " 全文快速移动
 Plug 'easymotion/vim-easymotion'
+
+" nerdtree
+Plug 'preservim/nerdtree'
 
 " 代码补全
 Plug 'Valloric/YouCompleteMe'
@@ -180,32 +180,57 @@ let g:netrw_errorlvl = 2
 let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 
 autocmd filetype netrw noremap <buffer> o <Nop>
+autocmd FileType netrw noremap <silent> <buffer> x :call NetrwCollapse()<CR>
 
-autocmd FileType netrw noremap <buffer> p :call NetrwToParent()<CR>
-
-autocmd FileType netrw noremap <buffer> x :call NetrwCollapse()<CR>
-
-function! NetrwToParent()
+function! NetrwCollapse()
     let line = getline('.')
     let cnt = count(line, '| ')
+    if cnt <= 1
+        return
+    endif
     let pat = '^'
     while cnt > 1
         let pat = pat . '| '
         let cnt = cnt - 1
     endwhile
-    let pat = pat . '\w'
+    let pat = pat . '\.\=\w'
     call search(pat, 'b')
-endfunction
-
-function! NetrwCollapse()
-    call NetrwToParent()
     exec "normal \<CR>"
 endfunction
 
+" augroup ProjectDrawer
+"   autocmd!
+"   autocmd StdinReadPre * let s:std_in=1
+"   autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Explore | endif
+" augroup END
+
+"--------------------------------------------------------------------------------
+" NERDTree
+"--------------------------------------------------------------------------------
+
+let NERDTreeMinimalUI=1                    " 不显示帮助提示
+let NERDTreeShowLineNumbers=0              " 显示行号
+let NERDTreeWinSize=30                     " 设置宽度
+let NERDTreeIgnore=['\.pyc','\~$','\.swp'] " 忽略一下文件的显示
+let NERDTreeMapHelp='H'                    " 打开帮助
+
+nnoremap <leader>n :NERDTreeMirror<CR>:NERDTreeToggle<CR>
+
+" Close the tab if NERDTree is the only window remaining in it.
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Open the existing NERDTree on each new tab.
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+" 自动打开NERDTree
 augroup ProjectDrawer
   autocmd!
   autocmd StdinReadPre * let s:std_in=1
-  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Explore | endif
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 augroup END
 
 "--------------------------------------------------------------------------------
@@ -339,6 +364,7 @@ let g:ycm_semantic_triggers =  {
 " go
 "--------------------------------------------------------------------------------
 
+let g:go_template_autocreate = 0
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
@@ -367,6 +393,35 @@ command -range=% JSONFormat :<line1>,<line2> ! python -m json.tool
 
 " compact json
 command -range=% JSONCompact :<line1>,<line2> s/[ \s\n\r]//g | noh
+
+"--------------------------------------------------------------------------------
+" 标签标题
+"--------------------------------------------------------------------------------
+
+function! Tabline()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    let tab = i + 1
+    let buflist = tabpagebuflist(tab)
+    " let winnr = tabpagewinnr(tab)
+    " let bufnr = buflist[winnr - 1]
+    let lastbuf = buflist[-1]
+    let bufname = bufname(lastbuf)
+
+    let s .= '%' . tab . 'T'
+    let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
+    let s .= ' ' . tab .':'
+    let s .= (bufname != '' ? '['. fnamemodify(bufname, ':t') . '] ' : '[None] ')
+  endfor
+
+  let s .= '%#TabLineFill#'
+  if (exists("g:tablineclosebutton"))
+    let s .= '%=%999XX'
+  endif
+  return s
+endfunction
+
+set tabline=%!Tabline()
 
 "================================================================================
 " 按键映射
@@ -404,16 +459,15 @@ cnoremap <Esc>f <S-Right>
 " 窗口切换
 "--------------------------------------------------------------------------------
 
-autocmd filetype netrw noremap <buffer> <C-l> <C-w>l
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-c> <C-w>c
-noremap <leader>wh <C-w>H
-noremap <leader>wj <C-w>J
-noremap <leader>wk <C-w>K
-noremap <leader>wl <C-w>L
+noremap <leader>H <C-w>H
+noremap <leader>J <C-w>J
+noremap <leader>K <C-w>K
+noremap <leader>L <C-w>L
 
 "--------------------------------------------------------------------------------
 " 标签快捷键
