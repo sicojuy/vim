@@ -403,10 +403,10 @@ function! Tabline()
   for i in range(tabpagenr('$'))
     let tab = i + 1
     let buflist = tabpagebuflist(tab)
-    " let winnr = tabpagewinnr(tab)
-    " let bufnr = buflist[winnr - 1]
-    let lastbuf = buflist[-1]
-    let bufname = bufname(lastbuf)
+    let winnum = tabpagewinnr(tab, '$')
+    let winnr = winnum > 1 ? 1 : 0
+    let bufnr = buflist[winnr]
+    let bufname = bufname(bufnr)
 
     let s .= '%' . tab . 'T'
     let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
