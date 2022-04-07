@@ -168,43 +168,6 @@ set termguicolors   " 开启24bit的颜色
 set background=dark " 主题背景 dark or light
 
 "--------------------------------------------------------------------------------
-" netrw
-"--------------------------------------------------------------------------------
-
-let g:netrw_liststyle = 3
-let g:netrw_banner = 0
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 75
-let g:netrw_errorlvl = 2
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-
-autocmd filetype netrw noremap <buffer> o <Nop>
-autocmd FileType netrw noremap <silent> <buffer> x :call NetrwCollapse()<CR>
-
-function! NetrwCollapse()
-    let line = getline('.')
-    let cnt = count(line, '| ')
-    if cnt <= 1
-        return
-    endif
-    let pat = '^'
-    while cnt > 1
-        let pat = pat . '| '
-        let cnt = cnt - 1
-    endwhile
-    let pat = pat . '\.\=\w'
-    call search(pat, 'b')
-    exec "normal \<CR>"
-endfunction
-
-" augroup ProjectDrawer
-"   autocmd!
-"   autocmd StdinReadPre * let s:std_in=1
-"   autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | Explore | endif
-" augroup END
-
-"--------------------------------------------------------------------------------
 " NERDTree
 "--------------------------------------------------------------------------------
 
