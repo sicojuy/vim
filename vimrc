@@ -10,6 +10,18 @@ Plug 'morhetz/gruvbox'
 " 状态栏
 Plug 'vim-airline/vim-airline'
 
+" 显示搜索匹配数目
+Plug 'google/vim-searchindex'
+
+" 缩进线
+Plug 'Yggdroot/indentLine'
+
+" 自动高亮hover的单词
+Plug 'RRethy/vim-illuminate'
+
+" 打开文件跳到上次编辑的位置
+Plug 'farmergreg/vim-lastplace'
+
 " 文本对齐
 Plug 'junegunn/vim-easy-align'
 
@@ -22,8 +34,17 @@ Plug 'preservim/nerdtree'
 " 代码补全
 Plug 'Valloric/YouCompleteMe'
 
+" 平滑滚动
+Plug 'psliwka/vim-smoothie'
+
+" 代码分隔合并
+Plug 'AndrewRadev/splitjoin.vim'
+
 " 检索
 Plug 'Yggdroot/LeaderF', { 'do': ':LeaderfInstallCExtension' }
+
+" 通过vim写wiki
+Plug 'vimwiki/vimwiki'
 
 " markdown
 Plug 'iamcco/mathjax-support-for-mkdp'
@@ -32,6 +53,7 @@ Plug 'iamcco/markdown-preview.vim'
 " git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'rhysd/conflict-marker.vim'
 
 " go
 Plug 'fatih/vim-go'
@@ -52,6 +74,9 @@ Plug 'tbastos/vim-lua'
 " rust
 Plug 'rust-lang/rust.vim'
 
+" 测试vim script
+Plug 'junegunn/vader.vim'
+
 " 插件结束的位置，插件全部放在此行上面
 call plug#end()
 
@@ -59,8 +84,17 @@ call plug#end()
 " 基础配置
 "================================================================================
 
+" 根据文件类型自动设置缩进等
+filetype plugin indent on
+
+" 语法高亮设置
+syntax enable
+
+" 定义快捷键的前缀，即<Leader>
+let mapleader=";"
+
 set nocompatible                      " 关闭兼容模式
-set nu                                " 设置行号
+set number                            " 设置行号
 set cursorline                        " 突出显示当前行
 set showmatch                         " 显示括号匹配
 set noeb                              " 不要提示音
@@ -72,8 +106,8 @@ set nobackup                          " 不要备份文件
 set noswapfile                        " 不要swap文件
 set confirm                           " 退出确认
 set wildmenu                          " 命令行补全提示
-"set splitright                        " 水平分隔窗口时在右边
-"set splitbelow                        " 垂直分隔窗口时在下面
+set splitright                        " 水平分隔窗口时在右边
+set splitbelow                        " 垂直分隔窗口时在下面
 set lazyredraw                        " 延迟绘制（提升性能）
 set display=lastline                  " 显示最后一行
 set scrolloff=10                      " 保持在光标上下的最少行数
@@ -84,7 +118,8 @@ set formatoptions+=m                  " 如遇Unicode值大于255的文本，不
 set formatoptions+=B                  " 合并两行中文时，不在中间加空格
 set ffs=unix,dos,mac                  " 文件换行符，默认使用 unix 换行符
 set showtabline=2                     " 总是显示tabline
-let mapleader=";"                     " 定义快捷键的前缀，即<Leader>
+set list                              " 显示tab符号
+set listchars=tab:¦\                  " 显示tab符号
 
 " tab缩进
 set autoindent   " 自动缩进，继承前一行的缩进方式
@@ -92,8 +127,8 @@ set cindent      " 打开C/C++缩进优化
 set expandtab    " tab替换成空格
 set tabstop=4    " 设置Tab长度为4空格
 set shiftwidth=4 " 设置自动缩进长度为4空格
-autocmd FileType go setlocal noexpandtab
-autocmd FileType javascript,html,vue,json setlocal tabstop=2 shiftwidth=2
+autocmd filetype go setlocal noexpandtab
+autocmd filetype javascript,html,vue setlocal tabstop=2 shiftwidth=2
 
 " vim系统菜单及语言设置
 set langmenu=zh_CN.UTF-8
@@ -104,37 +139,19 @@ set viminfo+=!
 set iskeyword+=_,$,@,%,#,-
 
 " 编码
-if has('multi_byte')
-    " 内部工作编码
-    set encoding=utf-8
-    " 文件默认编码
-    set fileencoding=utf-8
-    " 打开文件时自动尝试下面顺序的编码
-    set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,ecu-kr,latin1
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,ecu-kr,latin1
+
+if !has('gui_running')
+    set t_Co=256
 endif
 
-" 允许 Vim 自带脚本根据文件类型自动设置缩进等
-if has('autocmd')
-    filetype plugin indent on
+if has('termguicolors')
+    set t_8f=[38;2;%lu;%lu;%lum
+    set t_8b=[48;2;%lu;%lu;%lum
+    set termguicolors   " 开启24bit的颜色
 endif
-
-" 语法高亮设置
-if has('syntax')
-    syntax enable
-    syntax on
-endif
-
-" 打开文件时恢复上一次光标所在位置
-autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \     exe "normal! g`\"" |
-    \ endif
-
-" 保存时自动清除尾部空白符
-autocmd BufWritePre * :%s/\s\+$//e
-
-" 退出插入模式指定类型的文件自动保存
-" au InsertLeave *.go,*.sh,*.py,*.c,*.cpp write
 
 " 文件搜索和补全时忽略下面扩展名
 set suffixes=.bak,~,.o,.h,.info,.swp,.obj,.pyc,.pyo,.egg-info,.class
@@ -155,6 +172,9 @@ set wildignore+=*.msi,*.crx,*.deb,*.vfd,*.apk,*.ipa,*.bin,*.msu
 set wildignore+=*.gba,*.sfc,*.078,*.nds,*.smd,*.smc
 set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
 
+" 保存时自动清除尾部空白符
+autocmd BufWritePre * :%s/\s\+$//e
+
 "================================================================================
 " 插件配置
 "================================================================================
@@ -164,8 +184,24 @@ set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
 "--------------------------------------------------------------------------------
 
 colorscheme gruvbox
-set termguicolors   " 开启24bit的颜色
 set background=dark " 主题背景 dark or light
+
+"--------------------------------------------------------------------------------
+" Git conflict marker
+"--------------------------------------------------------------------------------
+
+" disable the default highlight group
+let g:conflict_marker_highlight_group = ''
+
+" Include text after begin and end markers
+let g:conflict_marker_begin = '^<<<<<<< .*$'
+let g:conflict_marker_end   = '^>>>>>>> .*$'
+
+highlight ConflictMarkerBegin guibg=#2f7366
+highlight ConflictMarkerOurs guibg=#2e5049
+highlight ConflictMarkerCommonAncestorsHunk guibg=#754a81
+highlight ConflictMarkerTheirs guibg=#344f69
+highlight ConflictMarkerEnd guibg=#2f628e
 
 "--------------------------------------------------------------------------------
 " NERDTree
@@ -240,7 +276,7 @@ noremap <leader>fb :<C-U><C-R>=printf("LeaderfBuffer %s", "")<CR><CR>
 noremap <leader>fm :<C-U><C-R>=printf("LeaderfMruCwd %s", "")<CR><CR>
 noremap <leader>ft :<C-U><C-R>=printf("LeaderfBufTag %s", "")<CR><CR>
 noremap <leader>fl :<C-U><C-R>=printf("LeaderfLine %s", "")<CR><CR>
-noremap <leader>fr :<C-U><C-R>=printf("Leaderf! rg -F %s", expand("<cword>"))<CR>
+noremap <leader>fg :<C-U><C-R>=printf("Leaderf! rg -F %s", expand("<cword>"))<CR>
 noremap <leader>fo :<C-U>Leaderf! rg --recall<CR>
 
 "--------------------------------------------------------------------------------
@@ -467,4 +503,3 @@ noremap <silent> <leader>tq :tabclose<cr>
 noremap <silent> <leader>to :tabonly<cr>
 noremap <silent> <leader>th :call Tab_MoveLeft()<cr>
 noremap <silent> <leader>tl :call Tab_MoveRight()<cr>
-
